@@ -411,7 +411,7 @@
                         <div class="center_time___TvRlJ"><span>剩余支付时间：</span><span class="timer">00:29:55</span>
                         </div>
                         <!--                        <div class="center_user___yGBTB">向个人用户<span>*知</span>转账</div>-->
-                        <div class="center_paid___nTmH7">我已付款</div>
+                        <div class="center_paid___nTmH7">立即付款</div>
                         <div class="center_tips___ntmK8">
                             <div class="center_tips_content___bF246">
                                 <div>温馨提示</div>
@@ -429,8 +429,6 @@
 </div>
 <script>
     $(document).ready(function() {
-        window.location.href = '<?=$pay_url?>';
-
         $(".center_qrcode_content___JlAPk").qrcode({
             render: "canvas",    //设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
             text: '<?=$pay_url?>',    //扫描二维码后显示的内容,可以直接填一个网址，扫描二维码后自动跳向该链接
@@ -494,7 +492,7 @@
         });
 
         $('.center_paid___nTmH7').click(function () {
-            alert('请返回商户查看支付结果');
+            window.location.href = '<?=$pay_url?>';
             return ;
         })
     });
