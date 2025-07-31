@@ -1,0 +1,68 @@
+<html><head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="renderer" content="webkit">
+    <title>微信扫码支付</title>
+    <link href="/upload/css/wechat.css?v=3" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/upload/js/layui-v2.9.8/layui/css/layui.css">
+<body>
+<div class="body">
+    <h1 class="mod-title">
+        <span class="text">微信扫码支付</span>
+    </h1>
+    <div class="mod-ct">
+        <div class="order">
+        </div>
+        <div class="amount">￥<?=htmlspecialchars($amount)?></div>
+        <div class="qr-image" id="qrcode">
+        </div>
+        <div class="detail" id="orderDetail">
+            <dl class="detail-ct">
+                <dt>购买物品</dt>
+                <dd id="productName">线上商城订单支付</dd>
+                <dt>商户订单号</dt>
+                <dd id="billId"><?=htmlspecialchars($order_number)?></dd>
+                <dt>创建时间</dt>
+                <dd id="createTime"><?=htmlspecialchars($add_time)?></dd>
+            </dl>
+        </div>
+        <div class="tip">
+            <span class="dec dec-left"></span>
+            <span class="dec dec-right"></span>
+            <div class="ico-scan" style="display: none"></div>
+            <div class="tip-text">
+                <p>请使用微信宝扫一扫</p>
+                <p>扫描二维码完成支付</p>
+            </div>
+        </div>
+        <div class="tip-text">
+        </div>
+    </div>
+    <script src="/upload/js/jquery.min.js"></script>
+    <script src="/upload/js/jquery.qrcode.min.js"></script>
+    <script src="/upload/js/layui-v2.9.8/layui/layui.js"></script>
+    <!--<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.bootcdn.net/ajax/libs/layer/3.1.1/layer.min.js"></script>-->
+    <!--<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>-->
+    <script>
+        var code_url = '<?=$pay_url?>';
+        var code_type = code_url.indexOf('data:image/')>-1?1:0;
+        if(code_type == 0){
+            $('#qrcode').qrcode({
+                text: code_url,
+                width: 230,
+                height: 230,
+                foreground: "#000000",
+                background: "#ffffff",
+                typeNumber: -1
+            });
+        }else{
+            $('#qrcode').html('<img src="'+code_url+'"/>');
+        }
+
+    </script>
+
+</div>
+</body>
+</html>
