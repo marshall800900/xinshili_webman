@@ -26,6 +26,7 @@ class QueryPayStatus implements Consumer
         try {
             //创建任务
             if ($data['task_type'] == 'build_task') {
+                LogHelper::write($data, '', 'time_log');
                 $list = Db::name('receiving_account_pay_url')->alias('rap')
                     ->field('rap.id, rap.api_code, rap.receiving_account_code, rap.cookie_id, rap.pay_channel_number')
                     ->join('pay_channel pc', 'rap.pay_channel_id = pc.id', 'left')
@@ -53,6 +54,7 @@ class QueryPayStatus implements Consumer
                 return call_user_func([$obj, $data['method']], $data);
             }
         } catch (\Exception $e) {
+            LogHelper::write($data, $e->getMessage(), 'error_log');
             throw new \Exception($e->getMessage());
         }
     }
