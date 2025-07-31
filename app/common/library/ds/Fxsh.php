@@ -249,6 +249,8 @@ class Fxsh
                         }
                     }
                 }
+            }else{
+                $is_pay = 1;
             }
             if (!$is_pay)
                 throw new \Exception('订单异常，请人工核实');
