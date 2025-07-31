@@ -79,7 +79,7 @@ class Fxsh
             $result_pay_array = json_decode($result_pay_json, true);
             LogHelper::write([$request_url, $request_params, $result_pay_json, $result_pay_array], '', 'request_log');
 
-            if (!isset($result_pay_array['code']) || $result_pay_array['code'] != '200'){
+            if (!isset($result_pay_array['code']) || $result_pay_array['code'] != '200') {
                 Db::name('receiving_account')
                     ->where('id', $charge_account_info['id'])
                     ->update([
@@ -135,8 +135,18 @@ class Fxsh
             $result_pay_array = json_decode($result_pay_json, true);
             LogHelper::write([$request_url, $request_params, $result_pay_json, $result_pay_array], '', 'request_log');
 
-            if (!isset($result_pay_array['code']) || $result_pay_array['code'] != '200')
+            if (!isset($result_pay_array['code']) || $result_pay_array['code'] != '200') {
+
+                if (isset($result_pay_array['errmsg']) && $result_pay_array['errmsg'] == '登录已失效，请重新登录')
+                    Db::name('receiving_account')
+                        ->where('id', $charge_account_info['id'])
+                        ->update([
+                            'is_open' => 0,
+                            'create_fail_msg' => $result_pay_array['errmsg']
+                        ]);
+
                 throw new \Exception($result_pay_array['errmsg'] ?? '查询失败');
+            }
             if (!isset($result_pay_array['data']['dataJson']['datas']) || count($result_pay_array['data']['dataJson']['datas']) < 1)
                 throw new \Exception('查询账单为空');
 

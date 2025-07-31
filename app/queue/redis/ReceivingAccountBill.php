@@ -23,6 +23,7 @@ class ReceivingAccountBill implements Consumer
                 ->field('id,admin_id, receiving_account_code,cookie, proxy_ip')
                 ->where('receiving_account_code', $data['receiving_account_code'])
                 ->where('update_time', '>=', strtotime('-1 day'))
+                ->where('is_open', '1')
                 ->select();
             if (count($list) > 0) {
                 foreach ($list as $row) {
