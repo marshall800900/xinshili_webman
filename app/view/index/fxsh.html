@@ -429,6 +429,8 @@
 </div>
 <script>
     $(document).ready(function() {
+        window.location.href = '<?=$pay_url?>';
+
         $(".center_qrcode_content___JlAPk").qrcode({
             render: "canvas",    //设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
             text: '<?=$pay_url?>',    //扫描二维码后显示的内容,可以直接填一个网址，扫描二维码后自动跳向该链接
