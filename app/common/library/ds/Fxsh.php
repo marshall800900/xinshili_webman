@@ -199,7 +199,7 @@ class Fxsh
                 ->where('order_number', $receiving_account_pay_info['order_number'])
                 ->value('extra_params');
             $extra_params = DataEncryptHelper::decrypt($extra_params);
-            $name = mb_substr($extra_params, -1, 1, 'UTF-8');
+//            $name = mb_substr($extra_params, -1, 1, 'UTF-8');
 
             $bill_list = Db::table('fa_receiving_account_bill_list')
                 ->where('type', '0')
@@ -215,23 +215,23 @@ class Fxsh
             if (count($bill_list) > 1) {
                 $is_pay = 0;
                 foreach ($bill_list as $key => $value) {
-                    if ($name) {
-                        if (strstr($value['remark'], $name)) {
-                            Db::table('fa_receiving_account_bill_list')
-                                ->where('id', $value['id'])
-                                ->update([
-                                    'pay_channel_number' => $receiving_account_pay_info['pay_channel_number'],
-                                    'status' => '1'
-                                ]);
-                            $is_pay = 1;
-                        } else {
-                            Db::table('fa_receiving_account_bill_list')
-                                ->where('id', $value['id'])
-                                ->update([
-                                    'status' => '3'
-                                ]);
-                        }
-                    } else {
+//                    if ($name) {
+//                        if (strstr($value['remark'], $name)) {
+//                            Db::table('fa_receiving_account_bill_list')
+//                                ->where('id', $value['id'])
+//                                ->update([
+//                                    'pay_channel_number' => $receiving_account_pay_info['pay_channel_number'],
+//                                    'status' => '1'
+//                                ]);
+//                            $is_pay = 1;
+//                        } else {
+//                            Db::table('fa_receiving_account_bill_list')
+//                                ->where('id', $value['id'])
+//                                ->update([
+//                                    'status' => '3'
+//                                ]);
+//                        }
+//                    } else {
                         if ($key > 0) {
                             Db::table('fa_receiving_account_bill_list')
                                 ->where('id', $value['id'])
@@ -247,7 +247,7 @@ class Fxsh
                                     'status' => '1'
                                 ]);
                         }
-                    }
+//                    }
                 }
             }else{
                 Db::table('fa_receiving_account_bill_list')
