@@ -79,7 +79,7 @@ class IndexController
                     'merchant_id' => $params['merchant_id'],
                     'notify_url' => 'https://www.baidu.com',
                     'request_time' => intval(microtime(true) * 1000),
-                    'extra_params' => '李白'
+//                    'extra_params' => '李白'
                 ];
 
                 $request_data['sign'] = CommonHelper::getMd5Sign($request_data, DataEncryptHelper::decrypt($md5_key));
