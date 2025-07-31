@@ -46,7 +46,7 @@ class QueryPayStatus implements Consumer
                             'cookie_id' => $value['cookie_id'],
                             'task_api_class' => $value['api_code'],
                             'pay_channel_number' => $value['pay_channel_number']
-                        ], ceil($key / 50));
+                        ], rand(1,5));
                     }
                 }
             } else {
