@@ -250,6 +250,12 @@ class Fxsh
                     }
                 }
             }else{
+                Db::table('fa_receiving_account_bill_list')
+                    ->where('id', $bill_list[0]['id'])
+                    ->update([
+                        'pay_channel_number' => $receiving_account_pay_info['pay_channel_number'],
+                        'status' => '1'
+                    ]);
                 $is_pay = 1;
             }
             if (!$is_pay)
