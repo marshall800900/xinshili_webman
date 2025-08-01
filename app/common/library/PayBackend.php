@@ -93,15 +93,16 @@ class PayBackend
      * @param $order_number
      * @return int|mixed
      */
-    public static function getOrderExpiredYime($order_number){
-        try{
+    public static function getOrderExpiredYime($order_number)
+    {
+        try {
             $pay_channel_number = Db::name('pay_order')
                 ->where('order_number', $order_number)
                 ->value('pay_channel_number');
             $order_expired_time = Db::name('receiving_account_pay_url')
                 ->where('pay_channel_number', $pay_channel_number)
                 ->value('order_expired_time');
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return 1800;
         }
         return intval($order_expired_time - time());
@@ -387,9 +388,9 @@ class PayBackend
     {
         try {
             Db::startTrans();
-//            $redis_key = '_createSuccess_' . $charge_account_info['id'];
-//            if (!RedisLockHelper::lock($redis_key, 1, 60))
-//                throw new \Exception('lock ing');
+            $redis_key = '_createSuccess_' . $charge_account_info['id'];
+            if (!RedisLockHelper::lock($redis_key, 1, 60))
+                throw new \Exception('lock ing');
 
             Db::name('receiving_account_pay_url')
                 ->insert([
@@ -432,19 +433,15 @@ class PayBackend
                 '生成支付订单'
             );
 
-//            RedisLockHelper::unlock($redis_key);
+            RedisLockHelper::unlock($redis_key);
             Db::commit();
         } catch (\Exception $e) {
             Db::rollback();
             LogHelper::write([$charge_account_info, $pay_channel_info, $pay_url, $amount, $real_pay_amount, $pay_channel_number, $order_expired_time, $expired_time, $extra_params, $cookie_id, $order_number, $num], $e->getMessage(), 'error_log');
 
-//            if ($e->getMessage() != 'lock ing') {
-//                RedisLockHelper::unlock($redis_key);
-//            } else
-//            if ($num > 0) {
-//                $num--;
-//                return self::createSuccess($charge_account_info, $pay_channel_info, $pay_url, $amount, $real_pay_amount, $pay_channel_number, $order_expired_time, $expired_time, $extra_params, $cookie_id, $order_number, $num);
-//            }
+            if ($e->getMessage() != 'lock ing')
+                RedisLockHelper::unlock($redis_key);
+
             throw new \Exception($e->getMessage());
         }
         return true;
@@ -582,7 +579,7 @@ class PayBackend
                     ->where('name', 'pay_url')
                     ->value('value');
                 if (isset($pay_channel_info['api_code']) && $pay_channel_info['api_code'] == 'dougong')
-                    $pay_url  = $pay_url .'wechat/index/wechatQrcode';
+                    $pay_url = $pay_url . 'wechat/index/wechatQrcode';
 
                 RedisHelper::set($redis_key, $pay_url, 60);
             }

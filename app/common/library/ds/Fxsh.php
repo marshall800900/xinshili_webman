@@ -17,7 +17,7 @@ class Fxsh
     const LOCK_TIME = 1;
 
     const CHARGE_ACCOUNT_LOCK_TIME = 0;
-    const SORT = 'desc';
+    const SORT = 'asc';
 
     /**
      * 私钥签名
