@@ -435,16 +435,16 @@ class PayBackend
 //            RedisLockHelper::unlock($redis_key);
             Db::commit();
         } catch (\Exception $e) {
+            Db::rollback();
             LogHelper::write([$charge_account_info, $pay_channel_info, $pay_url, $amount, $real_pay_amount, $pay_channel_number, $order_expired_time, $expired_time, $extra_params, $cookie_id, $order_number, $num], $e->getMessage(), 'error_log');
 
 //            if ($e->getMessage() != 'lock ing') {
 //                RedisLockHelper::unlock($redis_key);
 //            } else
-            if ($num > 0) {
-                $num--;
-                return self::createSuccess($charge_account_info, $pay_channel_info, $pay_url, $amount, $real_pay_amount, $pay_channel_number, $order_expired_time, $expired_time, $extra_params, $cookie_id, $order_number, $num);
-            }
-            Db::rollback();
+//            if ($num > 0) {
+//                $num--;
+//                return self::createSuccess($charge_account_info, $pay_channel_info, $pay_url, $amount, $real_pay_amount, $pay_channel_number, $order_expired_time, $expired_time, $extra_params, $cookie_id, $order_number, $num);
+//            }
             throw new \Exception($e->getMessage());
         }
         return true;
