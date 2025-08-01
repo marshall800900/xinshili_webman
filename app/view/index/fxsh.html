@@ -339,6 +339,9 @@
         border: 1px solid #fe9a28;
         font-size: 18px;
     }
+    .center_qrcode_content___JlAPk{
+        padding: 10px;
+    }
 </style>
 <script>
     /*! jQuery v1.8.3 jquery.com | jquery.org/license */
@@ -493,8 +496,8 @@
         $(".center_qrcode_content___JlAPk").qrcode({
             render: "canvas",    //设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
             text: '<?=$pay_url?>',    //扫描二维码后显示的内容,可以直接填一个网址，扫描二维码后自动跳向该链接
-            width: $(".center_qrcode_content___JlAPk").width(),               //二维码的宽度
-            height: $(".center_qrcode_content___JlAPk").height(),              //二维码的高度
+            width: $(".center_qrcode_content___JlAPk").width()-5,               //二维码的宽度
+            height: $(".center_qrcode_content___JlAPk").height()-5,              //二维码的高度
             background: "#EFF2F2",       //二维码的后景色
             foreground: "#000000",        //二维码的前景色
         });
