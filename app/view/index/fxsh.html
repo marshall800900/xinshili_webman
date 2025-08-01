@@ -132,14 +132,14 @@
         padding-right: 3px;
     }
     .zto_pc_page___HReAu .zto_pc_center_left___Bp8Cc .center_top___uO_2l .center_order___Ao8zI {
-        font-size: 11px;
+        font-size: 14px;
         color: #878787;
         padding-top: 15px;
     }
     .zto_pc_page___HReAu .zto_pc_center_left___Bp8Cc .center_top___uO_2l .center_order___Ao8zI .ant-typography {
         line-height: 0;
         color: #878787;
-        font-size: 11px;
+        font-size: 14px;
     }
     .zto_pc_page___HReAu .zto_pc_center_left___Bp8Cc .center_top___uO_2l .center_order___Ao8zI .ant-typography-copy {
         color: #878787;
@@ -198,10 +198,10 @@
     }
     .zto_pc_page___HReAu .zto_pc_center_left___Bp8Cc .center_top___uO_2l .center_qrcode___bjhuw .center_qrcode_tip___LQ9Ov {
         color: #fff;
-        font-size: 10px;
+        font-size: 14px;
     }
     .zto_pc_page___HReAu .zto_pc_center_left___Bp8Cc .center_top___uO_2l .center_time___TvRlJ {
-        font-size: 11px;
+        font-size: 14px;
         color: #878787;
         margin-top: 10px;
     }
@@ -220,7 +220,7 @@
     }
     .zto_pc_page___HReAu .zto_pc_center_left___Bp8Cc .center_top___uO_2l .center_paid___nTmH7 {
         cursor: pointer;
-        font-size: 11px;
+        font-size: 16px;
         color: #fe9a28;
         margin-top: 15px;
         padding: 5px 20px;
@@ -251,21 +251,21 @@
     }
     .zto_pc_page___HReAu .zto_pc_center_left___Bp8Cc .center_top___uO_2l .center_tips___ntmK8 .center_tips_content___bF246>div:nth-child(2) {
         line-height: 15px;
-        font-size: 10px;
+        font-size: 14px;
         color: #878787;
         text-align: start;
         width: max-content;
     }
     .zto_pc_page___HReAu .zto_pc_center_left___Bp8Cc .center_top___uO_2l .center_tips___ntmK8 .center_tips_content___bF246>div:nth-child(3) {
         line-height: 15px;
-        font-size: 10px;
+        font-size: 14px;
         color: #878787;
         text-align: start;
         width: max-content;
     }
     .zto_pc_page___HReAu .zto_pc_center_left___Bp8Cc .center_top___uO_2l .center_tips___ntmK8 .center_tips_content___bF246>div:nth-child(4) {
         line-height: 15px;
-        font-size: 10px;
+        font-size: 14px;
         color: #878787;
         text-align: start;
         width: max-content;
@@ -285,6 +285,59 @@
         font-weight: 700;
         margin-top: 15px;
         color: #3875f6;
+    }
+    .zto_mobile_bottom___Lx06K {
+        bottom: 0;
+        width: 100%;
+        height: 70px;
+        position: fixed;
+        align-items: center;
+        display: inline-flex;
+        background-color: #fff;
+        justify-content: space-around;
+        border-top: 1px solid #efefef;
+    }
+    .zto_mobile_bottom___Lx06K .btn___joDkw:nth-child(1) {
+        color: #fe9a28;
+    }
+    .zto_mobile_bottom___Lx06K .btn___joDkw:nth-child(2) {
+        background: #fe9a28;
+    }
+    .zto_mobile_page___C1cVj .zto_mobile_bottom___Lx06K .btn___joDkw {
+        height: 40px;
+        color: #fff;
+        padding: 10px 30px;
+        border-radius: 20px;
+    }
+    .css-7ny38l.ant-btn-variant-outlined, .css-7ny38l.ant-btn-variant-dashed {
+        border-color: #d9d9d9;
+        background: #ffffff;
+    }
+    .css-7ny38l.ant-btn {
+        outline: none;
+        position: relative;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        white-space: nowrap;
+        text-align: center;
+        background-image: none;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        user-select: none;
+        touch-action: manipulation;
+        color: rgba(0, 0, 0, 0.88);
+        font-size: 11px;
+        color: #fe9a28;
+        margin-top: 15px;
+        padding: 5px 20px;
+        line-height: normal;
+        border-radius: 18px;
+        box-sizing: content-box;
+        border: 1px solid #fe9a28;
+        font-size: 18px;
     }
 </style>
 <script>
@@ -411,7 +464,7 @@
                         <div class="center_time___TvRlJ"><span>剩余支付时间：</span><span class="timer">00:29:55</span>
                         </div>
                         <!--                        <div class="center_user___yGBTB">向个人用户<span>*知</span>转账</div>-->
-                        <div class="center_paid___nTmH7">立即付款</div>
+                        <div class="center_paid___nTmH7">我已付款</div>
                         <div class="center_tips___ntmK8">
                             <div class="center_tips_content___bF246">
                                 <div>温馨提示</div>
@@ -426,6 +479,14 @@
             </div>
         </div>
     </div>
+</div>
+<div class="zto_mobile_bottom___Lx06K">
+    <button type="button" class="down-app ant-btn css-7ny38l ant-btn-default ant-btn-color-default ant-btn-variant-outlined btn___joDkw">
+        <span>下载APP</span>
+    </button>
+    <button type="button" style="color: #fff;" class="gopay ant-btn css-7ny38l ant-btn-default ant-btn-color-default ant-btn-variant-outlined btn___joDkw">
+        <span>打开APP支付</span>
+    </button>
 </div>
 <script>
     $(document).ready(function() {
@@ -491,8 +552,16 @@
             return ;
         });
 
+        $('.gopay').click(function () {
+            window.open('<?=$pay_url?>', "_blank");
+            return ;
+        })
+        $('.down-app').click(function () {
+            window.open('https://fxshuo.com.cn/', "_blank");
+            return ;
+        })
         $('.center_paid___nTmH7').click(function () {
-            window.location.href = '<?=$pay_url?>';
+            alert('请返回商户查看支付结果');
             return ;
         })
     });
