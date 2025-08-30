@@ -17,7 +17,7 @@ class IndexController
 {
     public function notifyPay(Request $request){
         $params = $request->all();
-        LogHelper::write($params, '', 'request_log');
+        LogHelper::write($params, ' ', 'request_log');
 
         return '00';
     }
